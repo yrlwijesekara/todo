@@ -448,4 +448,27 @@
         .social-link:hover {
             color: #00bdd6;
         }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content,
+            .main-content,
+            .footer-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .search-input {
+                width: 200px;
+            }
+
+            .filters {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .modal {
+                padding: 40px 20px;
+            }
+        }
 
