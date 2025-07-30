@@ -163,3 +163,58 @@
             font-size: 16px;
             font-weight: bold;
         }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid #ebebea;
+            padding: 7px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #00bdd6;
+            color: white;
+            border-color: #00bdd6;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .sort-btn {
+            background: white;
+            border: 1px solid #ebebea;
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clear-btn {
+            background: transparent;
+            border: none;
+            color: #de3b40;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 7px 16px;
+        }
