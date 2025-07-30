@@ -110,3 +110,56 @@
             font-size: 16px;
             font-weight: 400;
         }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1232px;
+            margin: 0 auto;
+            padding: 50px 104px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-family: 'Epilogue', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: #242524;
+            margin-bottom: 40px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            color: #8c8d8b;
+            margin-left: auto;
+        }
+
+        .add-task-btn {
+            background: #00bdd6;
+            color: white;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            transition: background-color 0.2s;
+        }
+
+        .add-task-btn:hover {
+            background: #00a8c0;
+        }
+
+        .add-task-btn::before {
+            content: "+";
+            font-size: 16px;
+            font-weight: bold;
+        }
