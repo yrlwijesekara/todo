@@ -143,14 +143,12 @@
             left: 12px;
             top: 50%;
             transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
+            font-size: 16px;
             color: var(--text-secondary);
         }
 
         .theme-toggle {
-            width: 20px;
-            height: 20px;
+            font-size: 20px;
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -573,11 +571,11 @@
         }
 
         .social-link {
-            width: 16px;
-            height: 16px;
+            font-size: 16px;
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.2s;
+            display: inline-block;
         }
 
         .social-link:hover {
@@ -762,19 +760,13 @@
             .social-link {
                 width: 32px;
                 height: 32px;
-                padding: 8px;
+                font-size: 16px;
                 background: rgba(140, 141, 139, 0.1);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 transition: all 0.2s ease;
-            }
-            
-            .social-link svg {
-                width: 16px;
-                height: 16px;
-                flex-shrink: 0;
             }
             
             .social-link:hover {
@@ -904,19 +896,13 @@
             .social-link {
                 width: 28px;
                 height: 28px;
-                padding: 6px;
+                font-size: 14px;
                 background: rgba(140, 141, 139, 0.1);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 transition: all 0.2s ease;
-            }
-            
-            .social-link svg {
-                width: 16px;
-                height: 16px;
-                flex-shrink: 0;
             }
             
             .social-link:hover {
@@ -994,15 +980,9 @@
             .social-link {
                 width: 24px;
                 height: 24px;
-                padding: 4px;
+                font-size: 12px;
                 min-width: 24px;
                 min-height: 24px;
-            }
-            
-            .social-link svg {
-                width: 14px;
-                height: 14px;
-                flex-shrink: 0;
             }
         }
 

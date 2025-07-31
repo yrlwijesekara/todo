@@ -271,13 +271,12 @@
             localStorage.setItem('theme', theme);
             
             // Update theme toggle icon
-            const themeIcon = themeToggle.querySelector('path');
             if (theme === 'dark') {
                 // Sun icon for light mode
-                themeIcon.setAttribute('d', 'M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z');
+                themeToggle.className = 'bi bi-sun-fill theme-toggle';
             } else {
                 // Moon icon for dark mode
-                themeIcon.setAttribute('d', 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z');
+                themeToggle.className = 'bi bi-moon-fill theme-toggle';
             }
         }
 
