@@ -46,12 +46,21 @@
                 <button class="filter-btn" data-filter="completed">Completed</button>
             </div>
             <div class="filter-actions">
-                <button class="sort-btn">
-                    Sort By
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6,9 12,15 18,9"></polyline>
-                    </svg>
-                </button>
+                <div class="sort-dropdown">
+                    <button class="sort-btn" onclick="toggleSortDropdown()">
+                        <span id="sortLabel">Sort By</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6,9 12,15 18,9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="sort-dropdown-menu" id="sortDropdown">
+                        <button class="sort-option active" data-sort="default" onclick="setSortOption('default')">Default</button>
+                        <button class="sort-option" data-sort="priority-high" onclick="setSortOption('priority-high')">Priority: High First</button>
+                        <button class="sort-option" data-sort="priority-medium" onclick="setSortOption('priority-medium')">Priority: Medium First</button>
+                        <button class="sort-option" data-sort="priority-low" onclick="setSortOption('priority-low')">Priority: Low First</button>
+                        <button class="sort-option" data-sort="date" onclick="setSortOption('date')">Due Date</button>
+                    </div>
+                </div>
                 <button class="clear-btn" onclick="clearCompleted()">Clear All Completed</button>
             </div>
         </div>

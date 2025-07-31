@@ -87,6 +87,7 @@
         ];
         
         let currentFilter = 'all';
+        let currentSort = 'default';
         let nextId = 13;
 
         // DOM Elements
@@ -96,6 +97,8 @@
         const searchInput = document.getElementById('searchInput');
         const filterButtons = document.querySelectorAll('.filter-btn');
         const themeToggle = document.querySelector('.theme-toggle');
+        const sortDropdown = document.getElementById('sortDropdown');
+        const sortLabel = document.getElementById('sortLabel');
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -150,7 +153,7 @@
 
         function renderTasks() {
             const searchTerm = searchInput.value.toLowerCase();
-            let filteredTasks = tasks;
+            let filteredTasks = [...tasks];
 
             // Apply search filter
             if (searchTerm) {
@@ -165,6 +168,9 @@
             } else if (currentFilter === 'completed') {
                 filteredTasks = filteredTasks.filter(task => task.completed);
             }
+
+            // Apply sorting
+            filteredTasks = sortTasks(filteredTasks);
 
             // Render tasks
             taskList.innerHTML = filteredTasks.map(task => `
@@ -274,3 +280,72 @@
                 themeIcon.setAttribute('d', 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z');
             }
         }
+
+        // Sorting Functions
+        function sortTasks(tasksArray) {
+            const sortedTasks = [...tasksArray];
+            
+            switch (currentSort) {
+                case 'priority-high':
+                    return sortedTasks.sort((a, b) => {
+                        const priorityOrder = { 'high': 3, 'medium': 2, 'low': 1 };
+                        return priorityOrder[b.priority] - priorityOrder[a.priority];
+                    });
+                    
+                case 'priority-medium':
+                    return sortedTasks.sort((a, b) => {
+                        const priorityOrder = { 'medium': 3, 'high': 2, 'low': 1 };
+                        return priorityOrder[b.priority] - priorityOrder[a.priority];
+                    });
+                    
+                case 'priority-low':
+                    return sortedTasks.sort((a, b) => {
+                        const priorityOrder = { 'low': 3, 'medium': 2, 'high': 1 };
+                        return priorityOrder[b.priority] - priorityOrder[a.priority];
+                    });
+                    
+                case 'date':
+                    return sortedTasks.sort((a, b) => {
+                        return new Date(a.dueDate) - new Date(b.dueDate);
+                    });
+                    
+                case 'default':
+                default:
+                    return sortedTasks.sort((a, b) => a.id - b.id);
+            }
+        }
+
+        function toggleSortDropdown() {
+            sortDropdown.classList.toggle('active');
+        }
+
+        function setSortOption(sortType) {
+            currentSort = sortType;
+            
+            // Update active state
+            document.querySelectorAll('.sort-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-sort="${sortType}"]`).classList.add('active');
+            
+            // Update label
+            const labels = {
+                'default': 'Sort By',
+                'priority-high': 'Priority: High First',
+                'priority-medium': 'Priority: Medium First',
+                'priority-low': 'Priority: Low First',
+                'date': 'Due Date'
+            };
+            sortLabel.textContent = labels[sortType];
+            
+            // Close dropdown and re-render tasks
+            sortDropdown.classList.remove('active');
+            renderTasks();
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.sort-dropdown')) {
+                sortDropdown.classList.remove('active');
+            }
+        });
