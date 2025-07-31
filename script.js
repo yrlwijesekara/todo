@@ -100,7 +100,25 @@
         document.addEventListener('DOMContentLoaded', function() {
             renderTasks();
             setupEventListeners();
+            setupLogoFallback();
         });
+
+        function setupLogoFallback() {
+            const logoImage = document.querySelector('.logo-image');
+            const logoContainer = document.querySelector('.logo');
+            
+            if (logoImage) {
+                logoImage.addEventListener('error', function() {
+                    // If image fails to load, show the checkmark fallback
+                    logoContainer.classList.add('logo-fallback');
+                });
+                
+                logoImage.addEventListener('load', function() {
+                    // If image loads successfully, hide the checkmark
+                    logoContainer.classList.add('logo-loaded');
+                });
+            }
+        }
 
         function setupEventListeners() {
             // Filter buttons
