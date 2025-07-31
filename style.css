@@ -1,4 +1,28 @@
-  * {
+        :root {
+            /* Light theme colors */
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #242524;
+            --text-secondary: #8c8d8b;
+            --border-color: #ebebea;
+            --shadow-color: rgba(23, 26, 31, 0.12);
+            --shadow-color-light: rgba(23, 26, 31, 0.07);
+            --modal-overlay: rgba(0, 0, 0, 0.25);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme colors */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-color-light: rgba(0, 0, 0, 0.2);
+            --modal-overlay: rgba(0, 0, 0, 0.6);
+        }
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -6,16 +30,18 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--bg-primary);
             min-height: 100vh;
+            transition: background-color 0.3s ease;
         }
 
         /* Header */
         .header {
-            background: #ffffff;
-            box-shadow: 0px 0px 2px rgba(23, 26, 31, 0.12), 0px 0px 1px rgba(23, 26, 31, 0.07);
+            background: var(--bg-secondary);
+            box-shadow: 0px 0px 2px var(--shadow-color), 0px 0px 1px var(--shadow-color-light);
             padding: 12px 0;
-            border-bottom: 1px solid #ebebea;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         .header-content {
@@ -83,7 +109,7 @@
         .header-title {
             font-size: 18px;
             font-weight: 500;
-            color: #242524;
+            color: var(--text-primary);
         }
 
         .header-right {
@@ -99,15 +125,17 @@
         .search-input {
             width: 249px;
             height: 35px;
-            border: 1px solid #ebebea;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 0 12px 0 40px;
             font-size: 14px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
         }
 
         .search-input::placeholder {
-            color: #8c8d8b;
+            color: var(--text-secondary);
         }
 
         .search-icon {
@@ -117,14 +145,20 @@
             transform: translateY(-50%);
             width: 16px;
             height: 16px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
         }
 
         .theme-toggle {
             width: 20px;
             height: 20px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+            transform: scale(1.1);
         }
 
         .avatar {
@@ -158,13 +192,13 @@
             font-family: 'Epilogue', sans-serif;
             font-size: 36px;
             font-weight: 800;
-            color: #242524;
+            color: var(--text-primary);
             margin-bottom: 40px;
         }
 
         .greeting {
             font-size: 18px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
             margin-left: auto;
         }
 
@@ -207,13 +241,14 @@
         }
 
         .filter-btn {
-            background: white;
-            border: 1px solid #ebebea;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             padding: 7px 16px;
             border-radius: 18px;
             font-size: 14px;
             cursor: pointer;
             transition: all 0.2s;
+            color: var(--text-primary);
         }
 
         .filter-btn.active {
@@ -228,8 +263,8 @@
         }
 
         .sort-btn {
-            background: white;
-            border: 1px solid #ebebea;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             padding: 7px 16px;
             border-radius: 6px;
             font-size: 14px;
@@ -237,6 +272,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         .clear-btn {
@@ -256,11 +293,11 @@
         }
 
         .task-item {
-            background: white;
-            border: 1px solid #ebebea;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 25px;
-            box-shadow: 0px 0px 2px rgba(23, 26, 31, 0.12), 0px 0px 1px rgba(23, 26, 31, 0.07);
+            box-shadow: 0px 0px 2px var(--shadow-color), 0px 0px 1px var(--shadow-color-light);
             display: flex;
             align-items: flex-start;
             gap: 16px;
@@ -303,13 +340,13 @@
         .task-title {
             font-size: 18px;
             font-weight: 500;
-            color: #242524;
+            color: var(--text-primary);
             margin-bottom: 8px;
             transition: all 0.2s;
         }
 
         .task-item.completed .task-title {
-            color: #8c8d8b;
+            color: var(--text-secondary);
             text-decoration: line-through;
         }
 
@@ -318,7 +355,7 @@
             align-items: center;
             gap: 12px;
             font-size: 14px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
         }
 
         .task-due {
@@ -356,10 +393,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.25);
+            background: var(--modal-overlay);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
 
         .modal-overlay.active {
@@ -367,20 +405,21 @@
         }
 
         .modal {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 32px;
             padding: 106px 104px;
             width: 608px;
             max-width: 90vw;
             max-height: 90vh;
             overflow-y: auto;
+            transition: all 0.3s ease;
         }
 
         .modal-title {
             font-family: 'Epilogue', sans-serif;
             font-size: 36px;
             font-weight: 800;
-            color: #242524;
+            color: var(--text-primary);
             margin-bottom: 60px;
             text-align: center;
         }
@@ -392,18 +431,20 @@
         .form-label {
             display: block;
             font-size: 14px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
             margin-bottom: 6px;
         }
 
         .form-input {
             width: 100%;
             height: 40px;
-            border: 1px solid #d0d0d0;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 0 12px;
             font-size: 14px;
             transition: border-color 0.2s;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .form-input:focus {
@@ -414,12 +455,14 @@
         .form-select {
             width: 100%;
             height: 40px;
-            border: 1px solid #d0d0d0;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 0 12px;
             font-size: 14px;
-            background: white;
+            background: var(--bg-secondary);
             cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         .submit-btn {
@@ -441,10 +484,11 @@
 
         /* Footer */
         .footer {
-            background: white;
-            border-top: 1px solid #ebebea;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
             padding: 33px 0;
             margin-top: 100px;
+            transition: all 0.3s ease;
         }
 
         .footer-content {
@@ -458,7 +502,7 @@
 
         .footer-text {
             font-size: 12px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
         }
 
         .social-links {
@@ -469,7 +513,7 @@
         .social-link {
             width: 16px;
             height: 16px;
-            color: #8c8d8b;
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.2s;
         }
